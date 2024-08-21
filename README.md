@@ -23,6 +23,24 @@ Run `NODE_OPTIONS=--experimental-vm-modules npm test` to run the tests.
 
 If it complains about jsdom being absent, run `npm install -D jest-environment-jsdom` and try again.
 
+### NODE_OPTIONS in Windows
+
+If you're using Windows OS, you may see the error:<br>
+*'NODE_OPTIONS' is not recognized as an internal or external command, operable program or batch file.*
+
+If so, using PowerShell:
+
+Run `npm install --save-dev cross-env` to install cross-env.
+
+Add the following line to the scripts section of package.json:
+```
+"scripts": {
+  "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
+}
+```
+
+Now `npm test` should run without errors.
+
 ### Testing With JetBrains IDE (using a visual debugger, like the Amplenote Founding Developers do)
 
 If you are using a JetBrains IDE (Webstorm, Rubymine, anything that speaks Javascript), you can get an 
